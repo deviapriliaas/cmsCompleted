@@ -7,10 +7,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('judul')</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+  
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('css')
 </head>
 <body>
     <div id="app">
@@ -73,8 +74,47 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+        @auth
+       <div class="container">
+       @if(session()->has('completed'))
+       <div class="alert alert-success">
+       {{session()->get('completed')}}
+       </div>
+            
+        @endif
+    
+         <div class="row">
+                <div class="col-md-3">
+                   <ul class="list-group">
+                    <li class="list-group-item">
+                    <a href="{{route('post.index')}}">Post</a>
+                    </li>
+                    <li class="list-group-item">
+                    <a href="/categories">Categories</a>
+                    </li>
+                   </ul>
+                   <ul class="list-group mt-5">
+                    <li class="list-group-item">
+                    <a href="{{route('trashed-post')}}">Trashed Post</a>
+                    </li>
+                   </ul>
+                </div>
+
+                <div class="col-md-9">
+                @yield('content')
+                </div>
+        </div>
+       </div>
+        @else
+
+        @yield('content')
+
+        @endauth
         </main>
     </div>
+
+    <script src="{{ asset('js/app.js') }}"></script> 
+@yield('scripts')  
+
 </body>
 </html>
