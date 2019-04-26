@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Tags;
 use App\categories;
 use App\Http\Requests\Post\postrequest;
 
@@ -28,7 +29,7 @@ class postController extends Controller
      */
     public function create()
     {
-        return view('posts.create')->with('categories',categories::all());
+        return view('posts.create')->with('categories',categories::all())->with('tags',Tags::all());
     }
 
     /**
@@ -39,6 +40,7 @@ class postController extends Controller
      */
     public function store(postrequest $request)
     {
+        
         $post= new Post();
 
         $data=$request->all();
@@ -55,7 +57,12 @@ class postController extends Controller
         $post->published_at=$data['published_at'];
         $post->image=$gambar;
 
+        
+
         $post->save();
+        if($request->tags){
+            $post->tags()->attach($request->tags);
+        }
 
         session()->flash('completed','Create Post Successfully');
 
@@ -82,7 +89,8 @@ class postController extends Controller
      */
     public function edit(Post $post)
     {
-       return view('posts.create')->with('post',$post)->with('categories',categories::all());
+       
+       return view('posts.create')->with('post',$post)->with('categories',categories::all())->with('tags',Tags::all());
     }
 
     /**
@@ -96,9 +104,6 @@ class postController extends Controller
     {
         $editPost= Post::find($id);
         
-       
-        
-
        if($request->image== null)
        {
            
@@ -106,8 +111,9 @@ class postController extends Controller
             $editPost->description=$request->description;
             $editPost->content=$request->content;
             $editPost->published_at=$request->published_at;
-            $editPost->save();
-
+           
+           
+ 
        }
        else{
               $gambar=$request->image->store('image');
@@ -116,11 +122,16 @@ class postController extends Controller
             $editPost->description=$request->description;
             $editPost->content=$request->content;
             $editPost->published_at=$request->published_at;
-        $editPost->image=$gambar;
-        $editPost->save();
+            $editPost->image=$gambar;
+            
+           
        }
+       if($request->tags)
+       {
+           $editPost->tags()->sync($request->tags);
+       }
+       $editPost->save();
       
-
        session()->flash('completed','Edited Successfully');
        return redirect('post');
     }

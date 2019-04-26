@@ -78,10 +78,35 @@
                 <input type="text" name="published_at" id="published_at" class="form-control"  value="{{isset($post) ? $post->published_at : ''}}">
 
                 </div>
+                
+                <div class="from-group">
+                @if($tags->count() > 0)
+                     <select name="tags[]" id="tags" class="form-control tags-selector" multiple>
+                     @foreach($tags as $tags)
+                         <option value="{{$tags->id}}"
+                            @if(isset($post))
+                                @if($post->hasTag($tags->id))
+                                    selected
+                                @endif
+                            @endif
+
+                         
+                         
+                         >
+                         {{$tags->name}}
+                         
+                         </option>
+                    @endforeach
+                        </select>
+                        
+                   
+                 @endif
+                </div>
+               
                 <div class="from-group">
                 <button type="submit" class="btn btn-success">Post</button>
                 </div>
-                
+           
             
             </form>
            
@@ -97,13 +122,16 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.1/trix.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script>
 
     flatpickr('#published_at',{
         minDate: "today",
         enableTime:true
     })
-
+    $(".tags-selector").select2({
+  tags: true
+});
 </script>
 
 @endsection
@@ -111,5 +139,6 @@
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.1/trix.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 
 @endsection

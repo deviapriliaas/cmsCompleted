@@ -33,16 +33,12 @@ Post
                     <td>{{$post->title}}</td>
                     <td>{{ str_limit($post->description) }}</td>
                     <td>{!! str_limit($post->content) !!}</td>
-
+                    <td>{{$post->categories_id}}</td>
                     @if(!$post->trashed())
                      <td>Not trashed</td>
                     @else
                     <td>{{$post->deleted_at}}</td>
                     @endif
-                  
-                        <td>{{$post->categories_id}}</td>
-
-                  
                     <td>
                     <ul class="list-group">
 

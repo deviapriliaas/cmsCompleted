@@ -98,6 +98,9 @@
                     <li class="list-group-item">
                     <a href="/categories">Categories</a>
                     </li>
+                    <li class="list-group-item">
+                    <a href="/Tags">Tags</a>
+                    </li>
                    </ul>
                    <ul class="list-group mt-5">
                     <li class="list-group-item">

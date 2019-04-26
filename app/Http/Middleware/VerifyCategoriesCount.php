@@ -18,7 +18,7 @@ class VerifyCategoriesCount
         if(categories::all()->count() == 0)
         {
             session()->flash('error','There is no categories. You need to add categories first');
-            return redirect('/home');
+            return redirect(route('categories.create'));
         }
         return $next($request);
     }

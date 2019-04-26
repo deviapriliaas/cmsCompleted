@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\categories;
+use App\Tags;
 use App\Post;
-use App\Http\Requests\CreateCategoryRequest;
+use App\Http\Requests\Tags\CreateTagsRequest;
 
-class categoriesController extends Controller
+class TagsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +17,12 @@ class categoriesController extends Controller
     public function index()
 
     {
-       //DEVI APRILIA AYU SANTOSO
+       
         
-        $categories=categories::all();
-        return view('categories.index',
+        $tag=Tags::all();
+        return view('tags.index',
         [
-            'category'=>$categories
+            'category'=>$tag
            
             ]);
     
@@ -35,7 +35,7 @@ class categoriesController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        return view('tags.create');
     }
 
     /**
@@ -45,21 +45,21 @@ class categoriesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-public function store(CreateCategoryRequest $request)
+public function store(CreateTagsRequest $request)
     {
         
        
         $data=request()->all();
 
-        $createCategories= new categories();
+        $createTags= new Tags();
         
-        $createCategories->name=$data['name'];
+        $createTags->name=$data['name'];
 
-        $createCategories->save();
+        $createTags->save();
 
-        Session()->flash('completed','Categories Added');
+        Session()->flash('completed','Tags Added');
 
-        return redirect('categories');
+        return redirect('Tags');
 
     }
 
@@ -80,9 +80,9 @@ public function store(CreateCategoryRequest $request)
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(categories $category)
+    public function edit(Tags $category)
     {
-        return view('categories.create',['category'=>$category]);
+        return view('tags.create',['category'=>$category]);
     }
 
     /**
@@ -92,16 +92,16 @@ public function store(CreateCategoryRequest $request)
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateCategoryRequest $request, $id)
+    public function update(CreateTagsRequest $request, $id)
     {
-        $categories=categories::find($id);
-        $categories->name=request()->name;
+        $tag=Tags::find($id);
+        $tag->name=request()->name;
 
-        $categories->save();
+        $tag->save();
 
         session()->flash('success','Edit Successfully');
 
-        return redirect('categories');
+        return redirect('Tags');
         
     }
 
@@ -113,16 +113,15 @@ public function store(CreateCategoryRequest $request)
      */
     public function destroy($id)
     {
-        $categoriesDelete= categories::find($id);
-        if($categoriesDelete->posts->count() > 0 ){
-            session()->flash('error','Category Cannot Delete If There Is Still Have Posts');
-
-            return redirect()->back();
-
-        }
-        $categoriesDelete->delete();
+        $tagsDelete= Tags::find($id);
+        if($tagsDelete->posts->count() > 0)
+            {
+                session()->flash('error','tags still have a post you cannot delete'); 
+                return redirect()->back();
+            }
+        $tagsDelete->delete();
         session()->flash('completed','deleted success');
 
-        return redirect('categories');
+        return redirect('Tags');
     }
 }

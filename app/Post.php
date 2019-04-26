@@ -23,4 +23,13 @@ class Post extends Model
     {
         return $this->belongsTo(categories::class);
     }
+    public function tags()
+    {
+        return $this->belongsToMany(Tags::class);
+    }
+    //this is for edit tag in post
+    public function hasTag($tagId)
+    {
+            return in_array($tagId, $this->tags->pluck('id')->toArray());
+    }
 }
