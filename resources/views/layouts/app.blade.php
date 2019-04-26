@@ -80,7 +80,13 @@
        <div class="alert alert-success">
        {{session()->get('completed')}}
        </div>
-            
+        @endif
+
+        @if(session()->has('error'))
+
+        <div class="alert alert-danger">
+             {{session()->get('error')}}
+        </div>
         @endif
     
          <div class="row">

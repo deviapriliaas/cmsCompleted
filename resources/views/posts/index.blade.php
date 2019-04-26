@@ -18,7 +18,9 @@ Post
                 <thead>
                     <th>Image</th>
                     <th>Title</th>
+                    <th>description</th>
                     <th>Content</th>
+                    <th>Category</th>
                     <th>Deleted At</th>
                     <th>Action</th>
                 
@@ -29,15 +31,18 @@ Post
                   
                     <td><img src="{{ url('/image/'.$post->image) }}" width="60px" height="60px"></td>
                     <td>{{$post->title}}</td>
+                    <td>{{ str_limit($post->description) }}</td>
                     <td>{!! str_limit($post->content) !!}</td>
 
                     @if(!$post->trashed())
                      <td>Not trashed</td>
                     @else
-
-                     <td>{{$post->deleted_at}}</td>
-
+                    <td>{{$post->deleted_at}}</td>
                     @endif
+                  
+                        <td>{{$post->categories_id}}</td>
+
+                  
                     <td>
                     <ul class="list-group">
 

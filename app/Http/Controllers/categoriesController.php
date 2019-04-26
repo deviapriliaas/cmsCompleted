@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\categories;
-
+use App\Post;
 use App\Http\Requests\CreateCategoryRequest;
 
 class categoriesController extends Controller
@@ -17,11 +17,13 @@ class categoriesController extends Controller
     public function index()
 
     {
+       
+        
         $categories=categories::all();
         return view('categories.index',
         [
             'category'=>$categories
-            
+           
             ]);
     
     }

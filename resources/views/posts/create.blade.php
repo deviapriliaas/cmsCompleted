@@ -54,12 +54,32 @@
 
                 </div>
                 <div class="form-group">
+                <label for="categories_id">Category</label>
+                <select name="categories_id" id="category" class="form-control">
+                @foreach($categories as $data)
+                <option value="{{$data->id}}" selected="
+                @if(isset($post))
+                    @if($data->id === $post->categories_id)
+                        selected
+                        {{$data->name}}
+                    @endif
+                @else
+                
+                @endif"
+                >
+                {{$data->name}}
+                </option>
+                @endforeach
+                
+                </select>
+                </div>
+                <div class="form-group">
                 <label for="published_at">published_at</label>
                 <input type="text" name="published_at" id="published_at" class="form-control"  value="{{isset($post) ? $post->published_at : ''}}">
 
                 </div>
                 <div class="from-group">
-                <button type="submit" class="btn btn-success">Kirim</button>
+                <button type="submit" class="btn btn-success">Post</button>
                 </div>
                 
             
