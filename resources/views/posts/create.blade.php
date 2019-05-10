@@ -57,15 +57,14 @@
                 <label for="categories_id">Category</label>
                 <select name="categories_id" id="category" class="form-control">
                 @foreach($categories as $data)
-                <option value="{{$data->id}}" selected="
-                @if(isset($post))
+                <option value="{{$data->id}}"
+                   @if(isset($post))
+                   
                     @if($data->id === $post->categories_id)
-                        selected
-                        {{$data->name}}
+                            selected
                     @endif
-                @else
-                
-                @endif"
+
+                   @endif
                 >
                 {{$data->name}}
                 </option>
@@ -127,7 +126,8 @@
 
     flatpickr('#published_at',{
         minDate: "today",
-        enableTime:true
+        enableTime:true,
+        enableSeconds:true
     })
     $(".tags-selector").select2({
   tags: true

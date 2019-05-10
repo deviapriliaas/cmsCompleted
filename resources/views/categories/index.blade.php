@@ -11,7 +11,7 @@ Categories
 </div>
  <div class="card card-default">
     <div class="card-header">Categories</div>
-    @foreach($category as $data)
+    
     <div class="card-body">
     <table class="table">
                 <thead>
@@ -21,17 +21,18 @@ Categories
                 
                 </thead>
         
-      
+                @foreach($category as $data)
         <tbody>
-       
+        
             <td>{{$data->name}}</td>
             <td>{{$data->posts->count()}}</td>
             <td>  
                     <a href="{{route('categories.edit',$data->id)}}" class="btn btn-info">Edit</a>
                     <button class="btn btn-danger" onClick="HandleDelete({{$data->id}})">Delete</button>
             </td>
+         
         </tbody>
-       
+        @endforeach   
         </table>
      
         <form action="{{route('categories.destroy',$data->id)}}" method="post" id="deleteCategoryForm">
@@ -63,7 +64,7 @@ Categories
   
        
     </div>
-    @endforeach
+  
  </div>
  
  

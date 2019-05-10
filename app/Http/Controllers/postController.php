@@ -7,6 +7,7 @@ use App\Post;
 use App\Tags;
 use App\categories;
 use App\Http\Requests\Post\postrequest;
+use Illuminate\Support\Facades\Storage;
 
 
 class postController extends Controller
@@ -18,8 +19,8 @@ class postController extends Controller
      */
     public function index()
     {
-        $post=Post::all();
-        return view('posts.index',['post'=>$post]);
+        $post=Post::paginate(5);
+        return view('posts.index',['all'=>$post]);
     }
 
     /**
@@ -111,9 +112,7 @@ class postController extends Controller
             $editPost->description=$request->description;
             $editPost->content=$request->content;
             $editPost->published_at=$request->published_at;
-           
-           
- 
+            $editPost->categories_id=$request->categories_id;
        }
        else{
               $gambar=$request->image->store('image');
@@ -122,7 +121,11 @@ class postController extends Controller
             $editPost->description=$request->description;
             $editPost->content=$request->content;
             $editPost->published_at=$request->published_at;
+            $editPost->categories_id=$request->categories_id;
+            Storage::delete($editPost->image);
             $editPost->image=$gambar;
+            
+
             
            
        }
@@ -150,7 +153,8 @@ class postController extends Controller
         if($post->trashed())
         {
            $post->deleteImage();
-            $post->forceDelete();
+           $post->forceDelete();
+
             session()->flash('completed','Deleted Successfully');
             return redirect('trashed-post');
         }
@@ -172,8 +176,8 @@ class postController extends Controller
      */
     public function trashed()
     {
-        $trash=Post::onlyTrashed()->get();
-        return view('posts.index')->withPost($trash);
+        $trash=Post::onlyTrashed()->paginate(4);
+        return view('posts.index')->with('all',$trash);
     }
     public function restore($id)
     {

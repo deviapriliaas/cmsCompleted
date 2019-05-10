@@ -61,6 +61,9 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('users.edit-profil') }}">
+                                      My profil
+                                    </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
@@ -91,6 +94,7 @@
     
          <div class="row">
                 <div class="col-md-3">
+                   @if(auth()->user()->isAdmin())
                    <ul class="list-group">
                     <li class="list-group-item">
                     <a href="{{route('post.index')}}">Post</a>
@@ -101,14 +105,36 @@
                     <li class="list-group-item">
                     <a href="/Tags">Tags</a>
                     </li>
+                    <li class="list-group-item">
+                    <a href="/galeri">Galeri</a>
+                    </li>
+                    <li class="list-group-item">
+                    <a href="/users">User</a>
+                    </li>
                    </ul>
                    <ul class="list-group mt-5">
                     <li class="list-group-item">
                     <a href="{{route('trashed-post')}}">Trashed Post</a>
                     </li>
                    </ul>
+                   @else(auth()->user()->isIklan())
+                   
+                   <ul class="list-group">
+                    <li class="list-group-item">
+                    <a href="{{route('post.index')}}">Daftar Iklan</a>
+                    </li>
+                    <li class="list-group-item">
+                    <a href="/categories">File Iklan</a>
+                    </li>
+                    <li class="list-group-item">
+                    <a href="/Tags">Bukti Pembayaran</a>
+                    </li>
+                   </ul>
+                   @endif
                 </div>
 
+
+                 
                 <div class="col-md-9">
                 @yield('content')
                 </div>

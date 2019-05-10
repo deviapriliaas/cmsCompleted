@@ -22,7 +22,7 @@ Tags
         
               
         <tbody>
-        @foreach($category as $data)
+        @foreach($tags as $data)
             <td>{{$data->name}}</td>
             <td>{{$data->posts->count()}}</td>
             <td>  
@@ -31,8 +31,9 @@ Tags
             </td>
            
         </tbody>
-        @endforeach    
+        @endforeach 
         </table>
+        {{$tags->links()}}
      
         <form action="{{route('Tags.destroy',$data->id)}}" method="post" id="deleteCategoryForm">
         @csrf
@@ -41,7 +42,7 @@ Tags
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Hapus {{$data->name}}</h5>
+                <h5 class="modal-title" id="deleteModalLabel">Hapus</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -58,12 +59,12 @@ Tags
         </div>
         </div>
 
-
+        
         </form>
   
        
     </div>
-   
+  
  </div>
  
  

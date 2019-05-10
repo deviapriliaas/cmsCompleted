@@ -25,7 +25,7 @@ class CreateTagsRequest extends FormRequest
     {
         return [
         
-            'name'=>'required|max:10|min:5',
+            'name'=>'required|max:25|min:4',
         ];
     }
 }

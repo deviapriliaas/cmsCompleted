@@ -17,14 +17,8 @@ class TagsController extends Controller
     public function index()
 
     {
-       
-        
-        $tag=Tags::all();
-        return view('tags.index',
-        [
-            'category'=>$tag
-           
-            ]);
+        $tag=Tags::paginate(5);
+        return view('tags.index',['tags'=>$tag]);
     
     }
 

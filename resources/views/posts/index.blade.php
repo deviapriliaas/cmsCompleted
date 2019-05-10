@@ -10,7 +10,7 @@ Post
     <div class="card-header">Post</div>
 
     <div class="card-body">
-    @if($post->count() > 0)
+    @if($all->count() > 0)
 
     
             <table class="table">
@@ -25,7 +25,7 @@ Post
                     <th>Action</th>
                 
                 </thead>
-                @foreach($post as $post)
+                @foreach($all as $post)
                 <tbody>
                     
                   
@@ -112,6 +112,7 @@ Post
                        
                     
                     </form>
+                    {{$all->links()}}
                 
                 
             
