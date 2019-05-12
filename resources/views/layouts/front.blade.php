@@ -59,8 +59,8 @@
                                 <ul>
                                     <li><a href="{{url('/')}}">Beranda</a></li>
                                     <li><a href="{{route('galeri')}}">Galeri Foto</a></li>
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="{{route('about')}}">About</a></li>
+                                    <li><a href="{{route('contact')}}">Contact</a></li>
                                 </ul>
                             </div>
                             <!-- Nav End -->

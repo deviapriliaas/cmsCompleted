@@ -39,7 +39,7 @@ class WelcomeController extends Controller
         $tags=Tags::all();
         
         return view('pembaca.galeri')->with('category',$category)
-            ->with('tags',$tags)->with('galeri',galeri::PostIt()->paginate(4))->with('pict',$pict);;
+            ->with('tags',$tags)->with('galeri',galeri::PostIt()->get())->with('pict',$pict);;
 
     }
     public function single($id){
@@ -81,7 +81,11 @@ class WelcomeController extends Controller
     }
     public function contact()
     {
-        return view('pembaca.contact');
+        $categories=categories::all();
+        $tags=Tags::all();
+        return view('pembaca.contactus',['tags'=>$tags,
+        'category'=>$categories
+        ]);
     }
     public function search()
     {
@@ -92,6 +96,14 @@ class WelcomeController extends Controller
         ->with('all',Post::searched()->orderBy('id','desc')->paginate(4))
         ->with('tags',$tag)
         ->with('category',$category);
+    }
+    public function about()
+    {
+        $categories=categories::all();
+        $tags=Tags::all();
+        return view('pembaca.about',['tags'=>$tags,
+        'category'=>$categories
+        ]);
     }
     
     

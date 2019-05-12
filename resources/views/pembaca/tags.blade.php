@@ -3,6 +3,21 @@
 @section('title')
 
 @endsection
+@section('header')
+<section class="breadcrumb-area bg-img bg-overlay" style="background-image:url('/mag/img/bg-img/49.jpg');">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcrumb-content">
+                        <h2>Single Post</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+@endsection
+
 
 @section('post')
 <div class="archive-post-area">

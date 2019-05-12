@@ -16,6 +16,7 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{asset('mag/style.css')}}">
+    @yield('style')
 
 </head>
 
@@ -59,8 +60,8 @@
                                 <ul>
                                 <li><a href="{{url('/')}}">Beranda</a></li>
                                     <li><a href="{{route('galeri')}}">Galeri Foto</a></li>
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="{{route('about')}}">About</a></li>
+                                    <li><a href="{{route('contact')}}">Contact</a></li>
                                 </ul>
                             </div>
                             <!-- Nav End -->
@@ -86,17 +87,7 @@
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcrumb Area Start ##### -->
-    <section class="breadcrumb-area bg-img bg-overlay" style="background-image:url('/mag/img/bg-img/49.jpg');">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <div class="breadcrumb-content">
-                        <h2>Single Post</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+   @yield('header')
     <!-- ##### Breadcrumb Area End ##### -->
 
     <!-- ##### Breadcrumb Area Start ##### -->

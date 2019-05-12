@@ -17,8 +17,9 @@ Route::get('single/{post}','WelcomeController@single')->name('single');
 Route::get('post/search','WelcomeController@search')->name('search');
 Route::get('post/categories/{category}','WelcomeController@category')->name('find');
 Route::get('post/tag/{id}','WelcomeController@tag')->name('post.tag');
-Route::get('contact','WelcomeController@contact')->name('contact');
-Route::get('post/galeri','WelcomeController@galeri')->name('galeri');
+Route::get('beranda/contact','WelcomeController@contact')->name('contact');
+Route::get('beranda/galeri','WelcomeController@galeri')->name('galeri');
+Route::get('beranda/about','WelcomeController@about')->name('about');
 
 Route::get('beranda/post/{post}','pembaca\singlePostController@singlePost')->name('beranda.post');
 

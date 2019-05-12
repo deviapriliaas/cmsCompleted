@@ -1,5 +1,5 @@
 @extends('layouts.front')
-  @section('content')
+@section('content')
 
         <div class="mag-posts-content mt-30 mb-30 p-30 box-shadow">
             <!-- Trending Now Posts Area -->
