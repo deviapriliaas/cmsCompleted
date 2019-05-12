@@ -57,10 +57,10 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li class="active"><a href="{{url('/')}}">Beranda</a></li>
-                                    <li><a href="archive.html">Galeri Foto</a></li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="{{url('/')}}">Beranda</a></li>
+                                    <li><a href="{{route('galeri')}}">Galeri Foto</a></li>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Contact</a></li>
                                 </ul>
                             </div>
                             <!-- Nav End -->
@@ -196,7 +196,7 @@
                 <!-- Catagory Widget -->
                 <ul class="catagory-widgets">
                     @foreach($category as $data)
-                    <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i>{{$data->name}}</span> <span>{{$data->posts->count()}}</span></a></li>
+                    <li><a href="{{route('find',$data->id)}}"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i>{{$data->name}}</span> <span>{{$data->posts->count()}}</span></a></li>
                     @endforeach
                 </ul>
             </div>

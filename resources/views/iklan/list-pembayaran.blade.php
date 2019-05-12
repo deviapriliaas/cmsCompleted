@@ -13,21 +13,22 @@ List Your Iklan
     <div class="card-header">Iklan Anda</div>
  @if($iklan->count() > 0)
     <div class="card-body">
-    <p class="text-center">Silahkan Lakukan Pembayaran Pada Menu Pembayaran</p>
     <table class="table">
                 <thead>
+                    <th>Id Pembayaran</th>
                     <th>Id Iklan</th>
-                    <th>Gambar Iklan</th>
-                    <th>Published_at</th>
+                    <th>Image</th>
+                    <th>Tanggal Pembayaran</th>
                 </thead>
         
               
         <tbody>
         @foreach($iklan as $data)
         
+            <td>{{$data->id}}</td>
             <td>{{$data->id_iklan}}</td>
             <td><img width="300px" src="{{url('/image/'.$data->gambar_iklan)}}" alt=""></td>
-            <td>{{$data->published_at}}</td>
+            <td>{{$data->created_at}}</td>
             <td>  
                     <a href="" class="btn btn-info">Edit</a>
                     <button class="btn btn-danger" onClick="HandleDelete({{$data->id}})">Delete</button>

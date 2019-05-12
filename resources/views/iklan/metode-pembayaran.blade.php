@@ -13,7 +13,6 @@ List Your Iklan
     <div class="card-header">Iklan Anda</div>
  @if($iklan->count() > 0)
     <div class="card-body">
-    <p class="text-center">Silahkan Lakukan Pembayaran Pada Menu Pembayaran</p>
     <table class="table">
                 <thead>
                     <th>Id Iklan</th>
@@ -29,8 +28,10 @@ List Your Iklan
             <td><img width="300px" src="{{url('/image/'.$data->gambar_iklan)}}" alt=""></td>
             <td>{{$data->published_at}}</td>
             <td>  
-                    <a href="" class="btn btn-info">Edit</a>
-                    <button class="btn btn-danger" onClick="HandleDelete({{$data->id}})">Delete</button>
+                    @if($data->proses_iklan == 'belum bayar')
+                    <a href="{{route('pembayaran.edit',$data->id_iklan)}}" class="btn btn-info">Bayar</a>
+                    @endif
+                    <button class="btn btn-danger" onClick="HandleDelete({{$data->id_iklan}})">Delete</button>
             </td>
            
         </tbody>

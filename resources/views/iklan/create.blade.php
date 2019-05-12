@@ -32,15 +32,6 @@
         <label for="gambar_iklan">Gambar Iklan</label>
             <input type="file" class="form-control" id="gambar_iklan" name="gambar_iklan">
         </div>
-
-        <div class="form-group">
-        <label for="name">Jenis Iklan</label>
-            <select name="jenis_iklan" id="jenis_iklan" class="form-control">
-                <option value="1">1 Bulan</option>
-                <option value="3">3 Bulan</option>
-            </select>
-        </div>
-
         <div class="form-group">
                 <label for="published_at">Tanggal Mulai Iklan</label>
                 <input type="text" name="published_at" id="published_at" class="form-control"  value="{{isset($post) ? $post->published_at : ''}}">

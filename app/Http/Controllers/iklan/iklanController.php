@@ -4,6 +4,8 @@ namespace App\Http\Controllers\iklan;
 use App\Http\Controllers\Controller;
 use App\Daftar_iklan;
 use App\Profile;
+use App\User;
+use App\Pembayaran_iklan;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -16,11 +18,15 @@ class iklanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $iklan=Daftar_iklan::all();
-       return view('iklan.index',[
-           'iklan'=>$iklan
-       ]);
+    {   
+        $iklan=auth()->user()->id;
+        $daftarIklan=User::join('daftar__iklans','users.id','=','daftar__iklans.user_id')
+        ->select('daftar__iklans.*')
+        ->where(['daftar__iklans.user_id'=>$iklan])->get();
+                return view('iklan.index',[
+                    'iklan'=>$daftarIklan,
+                    
+                ]);
     }
 
     /**
@@ -47,17 +53,17 @@ class iklanController extends Controller
         $profile=auth()->user();
         $gambar=$request->gambar_iklan->store('iklan');
        
-        $addIklan->profile_id=$profile->id;
+        $addIklan->user_id=$profile->id;
         $addIklan->gambar_iklan=$gambar;
         $addIklan->published_at=$request->published_at;
-        $addIklan->jenis_iklan=$request->jenis_iklan;
+        $addIklan->proses_iklan='belum bayar';
        
 
         $addIklan->save();
 
         session()->flash('completed','Your Request Iklan added');
 
-        return redirect('iklan');
+        return redirect(route('pembayaran.index'));
     }
 
     /**
@@ -70,6 +76,15 @@ class iklanController extends Controller
     {
         //
     }
+    // public function addpembayaran()
+    // {
+        
+        
+        
+
+
+        
+    // }
 
     /**
      * Show the form for editing the specified resource.

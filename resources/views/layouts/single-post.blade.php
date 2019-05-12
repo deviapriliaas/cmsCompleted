@@ -57,10 +57,10 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li class="active"><a href="{{url('/')}}">Beranda</a></li>
-                                    <li><a href="archive.html">Galeri Foto</a></li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                <li><a href="{{url('/')}}">Beranda</a></li>
+                                    <li><a href="{{route('galeri')}}">Galeri Foto</a></li>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Contact</a></li>
                                 </ul>
                             </div>
                             <!-- Nav End -->
@@ -73,8 +73,7 @@
                                     <input type="search" name="search_query" id="topSearch" placeholder="Search">
                                     <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
                                 </form>
-                            </div>
-                            <!-- Login -->
+                            </div> <!-- Login -->
                             <a href="{{route('login')}}" class="login-btn">Admin  <i class="fa fa-user" aria-hidden="true"></i></a>
                             <!-- Submit Video -->
                             <a href="{{route('register')}}" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span> <span class="video-text">Register Iklan</span></a>

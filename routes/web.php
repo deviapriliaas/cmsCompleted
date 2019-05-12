@@ -28,6 +28,8 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::middleware(['auth','iklan'])->group(function(){
     Route::resource('create-profile','iklan\ProfileController');
     Route::resource('iklan','iklan\iklanController');
+    Route::resource('pembayaran','iklan\pembayaranIklan');
+    Route::get('datapembayaran','iklan\pembayaranIklan@datapembayaran')->name('datapembayaran');
 
 
 });

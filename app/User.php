@@ -50,6 +50,10 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Profile');
     }
+    public function daftar_iklan()
+    {
+        return $this->hasMany(Daftar_iklan::class,'user_id');
+    }
     
    
     

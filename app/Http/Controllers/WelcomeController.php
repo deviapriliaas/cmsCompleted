@@ -58,7 +58,7 @@ class WelcomeController extends Controller
         $categories=categories::find($id);
         $category=categories::all();
         $tags=Tags::all();
-        return view('pembaca.category',[
+        return view('pembaca.categories',[
             'category'=>$category,
             'tags'=>$tags,
             'all'=>$categories->posts()->searched()->paginate(4),

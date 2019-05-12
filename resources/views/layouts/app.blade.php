@@ -109,6 +109,12 @@
                     <li class="list-group-item">
                     <a href="{{route('users')}}">User</a>
                     </li>
+                    <li class="list-group-item">
+                    <a href="{{route('users')}}">Akun Iklan</a>
+                    </li>
+                    <li class="list-group-item">
+                    <a href="{{route('users')}}">Daftar Iklan</a>
+                    </li>
                    </ul>
                    <ul class="list-group mt-5">
                     <li class="list-group-item">
@@ -122,10 +128,10 @@
                     <a href="{{route('iklan.index')}}">Daftar Iklan</a>
                     </li>
                     <li class="list-group-item">
-                    <a href="/categories">File Iklan</a>
+                    <a href="{{url('pembayaran')}}">Pembayaran</a>
                     </li>
                     <li class="list-group-item">
-                    <a href="/Tags">Bukti Pembayaran</a>
+                    <a href="{{route('datapembayaran')}}">Status Pembayaran</a>
                     </li>
                    </ul>
                    @endif
