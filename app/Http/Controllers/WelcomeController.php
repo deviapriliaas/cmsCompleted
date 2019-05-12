@@ -49,15 +49,22 @@ class WelcomeController extends Controller
         ->select('tags.name')
         ->get();
         $post=Post::find($id);
-        return view('pembaca.post')->with('post',$post)->with('tags',$tag)->with('pict',$pict);;
+        $category=categories::all();
+        return view('pembaca.post')->with('post',$post)->with('tags',$tag)->with('pict',$pict)->with('category',$category);
     }
     public function category($id)
     {
-        $pict=galeri::orderBy('id','desc')->paginate(1);
+        
         $categories=categories::find($id);
         $category=categories::all();
         $tags=Tags::all();
-        return view('pembaca.category')->with('category',$category)->with('tags',$tags)->with('all',$categories->posts()->searched()->paginate(4))->with('pict',$pict);;
+        return view('pembaca.category',[
+            'category'=>$category,
+            'tags'=>$tags,
+            'all'=>$categories->posts()->searched()->paginate(4),
+        ]);
+        
+        //->with('category',$category)->with('tags',$tags)->with('all',$categories->posts()->searched()->paginate(4))->with('pict',$pict);;
     }
 
     public function tag($id)
@@ -65,12 +72,26 @@ class WelcomeController extends Controller
         $categories=categories::all();
         $tags=Tags::all();
         $tag=Tags::find($id);
-        $pict=galeri::orderBy('id','desc')->paginate(1);
-        return view('pembaca.tag')->with('category',$categories)->with('tags',$tags)->with('all',$tag->posts()->searched()->paginate(4))->with('pict',$pict);
+        return view('pembaca.tags',[
+            'category'=>$categories,
+            'tags'=>$tags,
+            'all'=>$tag->posts()->searched()->paginate(6),
+            ]);
+           
     }
     public function contact()
     {
         return view('pembaca.contact');
+    }
+    public function search()
+    {
+        $category=categories::all();
+        $tag=Tags::all();
+  
+        return view('pembaca.search')
+        ->with('all',Post::searched()->orderBy('id','desc')->paginate(4))
+        ->with('tags',$tag)
+        ->with('category',$category);
     }
     
     

@@ -50,7 +50,7 @@ class galeriController extends Controller
 
         session()->flash('completed','Success Add Picture');
 
-        return redirect('galeri');
+        return redirect(route('galeri.index'));
     }
 
     /**
@@ -120,6 +120,6 @@ class galeriController extends Controller
 
         session()->flash('completed','delete picture successfully');
 
-        return redirect('galeri');
+        return redirect(route('galeri.index'));
     }
 }

@@ -14,6 +14,17 @@ use Illuminate\Support\Facades\DB;
 
 class singlePostController extends Controller
 {
+    public function layout()
+    {
+        $tags=Tags::all();
+            $category=categories::all();
+
+            return view('layouts.single-post',[
+            
+                'tags'=>$tags,
+                'category'=>$category
+                ]);      
+    }
         public function singlePost($id)
         {
             $singlePost=Post::find($id);

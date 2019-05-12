@@ -68,6 +68,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+                                <a href="{{route('login')}}" class="btn btn-success">
+                                  Do You Have Account?
+                                </a>
                             </div>
                         </div>
                     </form>

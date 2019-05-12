@@ -39,7 +39,7 @@ class Post extends Model
     }
     public function scopeSearched($query)
     {
-        $search=request()->query('search');
+        $search=request()->query('search_query');
         if(!$search)
         {
             return $query->published();

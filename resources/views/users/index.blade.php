@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('judul')
-User
+    List User
 @endsection
 
 @section('content')

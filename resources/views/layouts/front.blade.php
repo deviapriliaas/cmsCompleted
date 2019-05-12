@@ -9,7 +9,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Mag - Video &amp; Magazine HTML Template</title>
+    <title>@yield('title')</title>
 
     <!-- Favicon -->
     <link rel="icon" href="{{asset('mag/img/core-img/favicon.ico')}}">
@@ -57,60 +57,8 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li class="active"><a href="index.html">Home</a></li>
-                                    <li><a href="archive.html">Archive</a></li>
-                                    <li><a href="#">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="archive.html">Archive</a></li>
-                                            <li><a href="video-post.html">Single Video Post</a></li>
-                                            <li><a href="single-post.html">Single Post</a></li>
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="submit-video.html">Submit Video</a></li>
-                                            <li><a href="login.html">Login</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Mega</a>
-                                        <div class="megamenu">
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="archive.html">Archive</a></li>
-                                                <li><a href="video-post.html">Single Video Post</a></li>
-                                                <li><a href="single-post.html">Single Post</a></li>
-                                                <li><a href="about.html">About Us</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="login.html">Login</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="archive.html">Archive</a></li>
-                                                <li><a href="video-post.html">Single Video Post</a></li>
-                                                <li><a href="single-post.html">Single Post</a></li>
-                                                <li><a href="about.html">About Us</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="login.html">Login</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="archive.html">Archive</a></li>
-                                                <li><a href="video-post.html">Single Video Post</a></li>
-                                                <li><a href="single-post.html">Single Post</a></li>
-                                                <li><a href="about.html">About Us</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="login.html">Login</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="archive.html">Archive</a></li>
-                                                <li><a href="video-post.html">Single Video Post</a></li>
-                                                <li><a href="single-post.html">Single Post</a></li>
-                                                <li><a href="about.html">About Us</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="login.html">Login</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
+                                    <li class="active"><a href="{{url('/')}}">Beranda</a></li>
+                                    <li><a href="archive.html">Galeri Foto</a></li>
                                     <li><a href="about.html">About</a></li>
                                     <li><a href="contact.html">Contact</a></li>
                                 </ul>
@@ -121,15 +69,15 @@
                         <div class="top-meta-data d-flex align-items-center">
                             <!-- Top Search Area -->
                             <div class="top-search-area">
-                                <form action="index.html" method="post">
-                                    <input type="search" name="top-search" id="topSearch" placeholder="Search and hit enter...">
+                                <form action="{{route('search')}}" method="GET">
+                                    <input type="search" name="search_query" id="topSearch" placeholder="Search">
                                     <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
                                 </form>
                             </div>
                             <!-- Login -->
-                            <a href="login.html" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                            <a href="{{route('login')}}" class="login-btn">Admin  <i class="fa fa-user" aria-hidden="true"></i></a>
                             <!-- Submit Video -->
-                            <a href="submit-video.html" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span> <span class="video-text">Submit Video</span></a>
+                            <a href="{{route('register')}}" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span> <span class="video-text">Register Iklan</span></a>
                         </div>
                     </div>
                 </nav>
@@ -215,7 +163,7 @@
                    
                     <div class="youtube-channel-content">
                         <a href="single-post.html" class="channel-title">{{$tag->name}}</a>
-                        <a href="#" class="btn subscribe-btn"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Subscribe</a>
+                        <a href="{{route('post.tag',$tag->id)}}" class="btn subscribe-btn"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Subscribe</a>
                     </div>
                 </div>
                 @endforeach
@@ -408,12 +356,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                     </div>
                     <div class="col-12 col-sm-6">
                         <nav class="footer-nav">
-                            <ul>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Privacy</a></li>
-                                <li><a href="#">Advertisement</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                            </ul>
                         </nav>
                     </div>
                 </div>

@@ -67,7 +67,7 @@ class postController extends Controller
 
         session()->flash('completed','Create Post Successfully');
 
-        return redirect('post');
+        return redirect(route('post.index'));
         
     }
 
@@ -136,7 +136,7 @@ class postController extends Controller
        $editPost->save();
       
        session()->flash('completed','Edited Successfully');
-       return redirect('post');
+       return redirect(route('post.index'));
     }
 
     /**
@@ -161,7 +161,7 @@ class postController extends Controller
         else{
         $post->delete();
         session()->flash('completed','Trashed Successfully');
-        return redirect('post');
+        return redirect(route('post.index'));
         }
 
         

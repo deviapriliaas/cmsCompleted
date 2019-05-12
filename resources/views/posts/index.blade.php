@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('judul')
-Post
+    List Post
 @endsection
 
 @section('content')

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('judul')
-{{isset($tag) ? 'edit' : 'create'}}
+{{isset($tag) ? 'Edit Tag' : 'Create Tag'}}
 @endsection
 @section('content')
 

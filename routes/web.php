@@ -12,27 +12,29 @@
 */
 
 Route::get('/','WelcomeController@welcome')->name('welcome');
+Route::get('search','WelcomeController@search')->name('search');
 Route::get('single/{post}','WelcomeController@single')->name('single');
 Route::get('post/search','WelcomeController@search')->name('search');
 Route::get('post/categories/{category}','WelcomeController@category')->name('find');
 Route::get('post/tag/{id}','WelcomeController@tag')->name('post.tag');
 Route::get('contact','WelcomeController@contact')->name('contact');
-
-Route::get('iklan','iklan@index')->name('iklan');
 Route::get('post/galeri','WelcomeController@galeri')->name('galeri');
 
 Route::get('beranda/post/{post}','pembaca\singlePostController@singlePost')->name('beranda.post');
 
 Auth::routes();
-Route::middleware(['auth'])->group( function ()
-{
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
-    Route::get('/home', 'HomeController@index')->name('home');
-  
-    
+Route::middleware(['auth','iklan'])->group(function(){
+    Route::resource('create-profile','iklan\ProfileController');
+    Route::resource('iklan','iklan\iklanController');
+
+
 });
 
-Route::middleware(['auth','admin'])->group(function (){
+
+Route::middleware(['auth','admin'])->group( function ()
+{
     Route::get('users','UserController@index')->name('users');
     Route::resource('categories','categoriesController');
     Route::resource('Tags','TagsController');
@@ -44,5 +46,7 @@ Route::middleware(['auth','admin'])->group(function (){
     Route::put('users/update-profil','UserController@updateprofil')->name('users.update');
     Route::resource('galeri','galeriController');
     
-
+    
 });
+
+

@@ -12,8 +12,6 @@ class frontController extends Controller
     {
         $category=categories::all();
         $tag=Tags::all();
-  
-
         return view('layouts.front',['category'=>$category,'tags'=>$tag]);
     }
 }

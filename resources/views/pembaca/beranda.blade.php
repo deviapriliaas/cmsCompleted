@@ -1,13 +1,14 @@
+ 
   @extends('layouts.front')
-  @section('content')
-  <!-- >>>>>>>>>>>>>>>>>>>>
-         Post Left Sidebar Area
-        <<<<<<<<<<<<<<<<<<<<< -->
-       
 
-        <!-- >>>>>>>>>>>>>>>>>>>>
-             Main Posts Area
-        <<<<<<<<<<<<<<<<<<<<< -->
+ @section('title')
+
+  Beranda
+
+ @endsection
+
+
+  @section('content')
         <div class="mag-posts-content mt-30 mb-30 p-30 box-shadow">
             <!-- Trending Now Posts Area -->
             <div class="trending-now-posts mb-30">
@@ -27,7 +28,7 @@
                         </div>
                     </div>
                     @empty
-                     <p class="text-center">Not found <strong>{{request()->query('search')}}</strong></p>
+                     <p class="text-center">Not found <strong>{{request()->query('search_query')}}</strong></p>
                     @endforelse
 
                 </div>

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('judul')
+        Home
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
