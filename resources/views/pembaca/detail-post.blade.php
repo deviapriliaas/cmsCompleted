@@ -63,15 +63,7 @@
                             </div>
 
                             <!-- Post Author -->
-                            <div class="post-author d-flex align-items-center">
-                                <div class="post-author-thumb">
-                                    <img src="img/bg-img/52.jpg" alt="">
-                                </div>
-                                <div class="post-author-desc pl-4">
-                                    <a href="#" class="author-name">Alan Shaerer</a>
-                                    <p>Duis tincidunt turpis sodales, tincidunt nisi et, auctor nisi. Curabitur vulputate sapien eu metus ultricies fermentum nec vel augue. Maecenas eget lacinia est.</p>
-                                </div>
-                            </div>
+                           
                             <div class="comment_area clearfix bg-white mb-30 p-30 box-shadow">
                             @include('partials.disqus')
                             </div>
@@ -79,68 +71,7 @@
                     </div>
         </div>
                     <!-- Related Post Area -->
-                    <div class="related-post-area bg-white mb-30 px-30 pt-30 box-shadow">
-                        <!-- Section Title -->
-                        <div class="section-heading">
-                            <h5>Related Post</h5>
-                        </div>
-
-                        <div class="row">
-                            <!-- Single Blog Post -->
-                            <div class="col-12 col-md-6 col-lg-4">
-                                <div class="single-blog-post style-4 mb-30">
-                                    <div class="post-thumbnail">
-                                        <img src="img/bg-img/29.jpg" alt="">
-                                    </div>
-                                    <div class="post-content">
-                                        <a href="single-post.html" class="post-title">Dentists Are Smiling Over Painless Veneer</a>
-                                        <div class="post-meta d-flex">
-                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 1034</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Blog Post -->
-                            <div class="col-12 col-md-6 col-lg-4">
-                                <div class="single-blog-post style-4 mb-30">
-                                    <div class="post-thumbnail">
-                                        <img src="img/bg-img/30.jpg" alt="">
-                                        <a href="video-post.html" class="video-play"><i class="fa fa-play"></i></a>
-                                        <span class="video-duration">09:27</span>
-                                    </div>
-                                    <div class="post-content">
-                                        <a href="single-post.html" class="post-title">Will The Democrats Be Able To Reverse</a>
-                                        <div class="post-meta d-flex">
-                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 1034</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Blog Post -->
-                            <div class="col-12 col-md-6 col-lg-4">
-                                <div class="single-blog-post style-4 mb-30">
-                                    <div class="post-thumbnail">
-                                        <img src="img/bg-img/28.jpg" alt="">
-                                    </div>
-                                    <div class="post-content">
-                                        <a href="single-post.html" class="post-title">A Guide To Rocky Mountain Vacations</a>
-                                        <div class="post-meta d-flex">
-                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 1034</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                    
 
                     <!-- Comment Area Start -->
                     

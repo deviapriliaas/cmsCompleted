@@ -27,6 +27,7 @@
     @endif
 
     <div class="card-body">
+    <h4>{{isset($post) ? 'Edit Post' : 'Create Post'}}</h4>
             <form action="{{isset($post) ? route('post.update',$post->id):route('post.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             @if(isset($post))
@@ -79,8 +80,9 @@
                 </div>
                 
                 <div class="from-group">
+                <label for="tags">Tags</label>
                 @if($tags->count() > 0)
-                     <select name="tags[]" id="tags" class="form-control tags-selector" multiple>
+                     <select name="tags[]" id="tags" class="form-control tags-selector" multiple required>
                      @foreach($tags as $tags)
                          <option value="{{$tags->id}}"
                             @if(isset($post))

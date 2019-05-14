@@ -48,7 +48,8 @@ Route::middleware(['auth','admin'])->group( function ()
     Route::get('users/edit-profil','UserController@editprofil')->name('users.edit-profil');
     Route::put('users/update-profil','UserController@updateprofil')->name('users.update');
     Route::resource('galeri','galeriController');
-    
+    Route::resource('daftar-iklan','daftarIklan');
+    Route::get('list','daftarIklan@showList');
     
 });
 

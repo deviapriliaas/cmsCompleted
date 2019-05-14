@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Profile;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user=auth()->user();
+        $user1=auth()->user()->id;
+        $pict=$user->profile()->where('user_id','=','$user1')->get();
+        return view('home',['user'=>$pict]);
     }
 }

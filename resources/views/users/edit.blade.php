@@ -22,6 +22,7 @@
                             <input type="text" class="form-control" name="email" id="email" value="{{$user->email}}">
                             
                             </div>
+                            
                             <button type="submit" class="btn btn-success">Submit</button>
                         
                         </form>

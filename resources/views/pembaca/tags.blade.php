@@ -43,7 +43,7 @@
                                     @endforeach
                                     
                                 </div>
-                                <a href="video-post.html" class="post-title">{{$tag->title}}</a>
+                                <a href="{{route('beranda.post',$tag->id)}}" class="post-title">{{$tag->title}}</a>
                                 <!-- Post Meta -->
                                 <div class="post-meta-2">
                                     <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 1034</a>
@@ -56,6 +56,8 @@
                         @empty
                          <p class="text-center">Not found <strong>{{request()->query('search')}}</strong></p>
                         @endforelse
+
+                        {{$all->links()}}
 
 
                         <!-- Pagination -->

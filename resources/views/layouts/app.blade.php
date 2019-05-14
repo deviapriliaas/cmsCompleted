@@ -43,12 +43,20 @@
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                               
+                                        @if(session()->has('error'))
+
+                                        <div class="alert alert-danger">
+                                            {{session()->get('error')}}
+                                        </div>
+                                        @endif
                             </li>
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
+                               
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     
@@ -110,10 +118,10 @@
                     <a href="{{route('users')}}">User</a>
                     </li>
                     <li class="list-group-item">
-                    <a href="{{route('users')}}">Akun Iklan</a>
+                    <a href="{{url('daftar-iklan')}}">Akun Iklan</a>
                     </li>
                     <li class="list-group-item">
-                    <a href="{{route('users')}}">Daftar Iklan</a>
+                    <a href="{{url('list')}}">Daftar Iklan</a>
                     </li>
                    </ul>
                    <ul class="list-group mt-5">

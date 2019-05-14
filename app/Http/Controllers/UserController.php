@@ -42,4 +42,9 @@ class UserController extends Controller
         return redirect('users');
 
     }
+    public function app()
+    {
+        $user=User::all();
+        return view('layouts.app',['$user'=>$user]);
+    }
 }

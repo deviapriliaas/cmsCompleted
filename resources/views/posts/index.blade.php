@@ -33,7 +33,7 @@
                     <td>{{$post->title}}</td>
                     <td>{{ str_limit($post->description) }}</td>
                     <td>{!! str_limit($post->content) !!}</td>
-                    <td>{{$post->categories_id}}</td>
+                    <td>{{$post->categories->name}}</td>
                     @if(!$post->trashed())
                      <td>Not trashed</td>
                     @else

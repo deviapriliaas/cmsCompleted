@@ -4,7 +4,7 @@ namespace App\Http\Requests\Post;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class postrequest extends FormRequest
+class editpost extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,10 @@ class postrequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=>'required|max:100',
-            'description'=>'required|max:225',
+            'title'=>'required',
+            'description'=>'required',
             'content'=>'required',
-            'image'=>'required|file|mimes:jpg,jpeg,png,gif',
+            'image'=>'file|mimes:jpg,jpeg,png,gif',
             'published_at'=>'required',
             'categories_id'=>'required'
         ];

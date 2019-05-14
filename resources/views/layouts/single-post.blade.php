@@ -75,7 +75,7 @@
                                     <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
                                 </form>
                             </div> <!-- Login -->
-                            <a href="{{route('login')}}" class="login-btn">Admin  <i class="fa fa-user" aria-hidden="true"></i></a>
+                            <a href="{{route('login')}}" class="login-btn">Login  <i class="fa fa-user" aria-hidden="true"></i></a>
                             <!-- Submit Video -->
                             <a href="{{route('register')}}" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span> <span class="video-text">Register Iklan</span></a>
                         </div>

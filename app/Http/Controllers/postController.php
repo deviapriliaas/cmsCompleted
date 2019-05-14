@@ -7,6 +7,7 @@ use App\Post;
 use App\Tags;
 use App\categories;
 use App\Http\Requests\Post\postrequest;
+use App\Http\Requests\Post\editpost;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -101,7 +102,7 @@ class postController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(postrequest $request,$id)
+    public function update(editpost $request,$id)
     {
         $editPost= Post::find($id);
         
@@ -117,17 +118,13 @@ class postController extends Controller
        else{
               $gambar=$request->image->store('image');
             
-            $editPost->title=$request->title;
-            $editPost->description=$request->description;
-            $editPost->content=$request->content;
-            $editPost->published_at=$request->published_at;
-            $editPost->categories_id=$request->categories_id;
-            Storage::delete($editPost->image);
-            $editPost->image=$gambar;
-            
-
-            
-           
+                $editPost->title=$request->title;
+                $editPost->description=$request->description;
+                $editPost->content=$request->content;
+                $editPost->published_at=$request->published_at;
+                $editPost->categories_id=$request->categories_id;
+                Storage::delete($editPost->image);
+                $editPost->image=$gambar;
        }
        if($request->tags)
        {

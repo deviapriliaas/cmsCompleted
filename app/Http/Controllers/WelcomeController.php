@@ -8,28 +8,31 @@ use App\categories;
 use App\Tags;
 use App\post_tags;
 use App\galeri;
+use App\Daftar_iklan;
 use Illuminate\Support\Facades\DB;
 
 class WelcomeController extends Controller
 {
     public function welcome()
     {
-
+        $iklan=Daftar_iklan::paginate(1);
         $pict=galeri::orderBy('id','desc')->paginate(1);
         $category=categories::all();
         $tags=Tags::all();
         $lifestyle=Post::where('published_at','<=',now())->orderBy('id','desc')->paginate(1);
-        $post=Post::orderBy('id','asc')->paginate(6);
+        $post=Post::orderBy('id','asc')->paginate(4);
         $khusus=Post::join('categories','posts.categories_id','=','categories.id')
                     ->select('posts.*','categories.name')
                     ->where('categories.name','LIKE','khusus')
                     ->orderBy('posts.id','asc')
-                    ->paginate(1);
+                    ->limit(1)
+                    ->get();
         return view('pembaca.beranda')->with('category',$category)
             ->with('tags',$tags)
             ->with('all',Post::searched()->orderBy('id','desc')->paginate(4))->with('pict',$pict)->with('post',$post)
             ->with('khusus',$khusus)
-            ->with('life',$lifestyle);
+            ->with('life',$lifestyle)
+            ->with('iklan',$iklan);
         }
     
     public function galeri()

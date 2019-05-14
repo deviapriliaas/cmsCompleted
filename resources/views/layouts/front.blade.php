@@ -173,7 +173,9 @@
 
             <!-- Sidebar Widget -->
             <div class="single-sidebar-widget">
-                <a href="#" class="add-img"><img src="{{asset('mag/img/bg-img/add.png')}}" alt=""></a>
+            @foreach($iklan as $left)
+                <a class="add-img"><img src="{{url('/image/'.$left->gambar_iklan)}}" alt=""></a>
+            @endforeach
             </div>
 
             <!-- Sidebar Widget -->
@@ -216,7 +218,9 @@
 
             <!-- Sidebar Widget -->
             <div class="single-sidebar-widget">
-                <a href="#" class="add-img"><img src="{{asset('mag/img/bg-img/add2.png')}}" alt=""></a>
+            @foreach($iklan as $iklan)
+                <a class="add-img"><img src="{{url('/image/'.$iklan->gambar_iklan)}}" alt=""></a>
+            @endforeach
             </div>
 
             <!-- Sidebar Widget -->
